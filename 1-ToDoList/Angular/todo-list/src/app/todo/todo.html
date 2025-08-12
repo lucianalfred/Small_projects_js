@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">To-Do List</h2>
+
+      <div class="input-group mb-3">
+        <input
+          [(ngModel)]="newTask"
+          type="text"
+          class="form-control"
+          placeholder="Nova tarefa..."
+        />
+        <button class="btn btn-primary" (click)="addTask()">Adicionar</button>
+      </div>
+
+      <ul class="list-group">
+        <li
+          *ngFor="let task of tasks; let i = index"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="form-check">
+            <input
+              class="form-check-input me-2"
+              type="checkbox"
+              [(ngModel)]="task.done"
+            />
+            <label
+              class="form-check-label"
+              [ngClass]="{ 'text-decoration-line-through text-muted': task.done }"
+            >
+              {{ task.text }}
+            </label>
+          </div>
+
+          <button
+            class="btn btn-sm btn-outline-danger"
+            (click)="removeTask(i)"
+          >
+        
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
